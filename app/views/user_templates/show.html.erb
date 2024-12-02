@@ -26,7 +26,7 @@
 
 
 
-<h2>Own photos</h2>
+<h2>Own photos (<%= @the_user.own_photos.count %>)</h2>
 
 <table border="1">
   <tr>
@@ -50,33 +50,29 @@
     </th>
   </tr>
 
-  <%# @the_director.filmography.order(:year).each do |a_movie| %>
-<!--    <tr>
+  <% @the_user.own_photos.order(:created_at).each do |photo| %>
+    <tr>
       <td>
-        <%#= a_movie.id %>-->
-<!--      </td>
-
-      <td>
-        <img src="<%#= a_movie.image %>" style="width:250px;">
+        <img src="<%= photo.image %>" style="width:250px;">
       </td>
 
       <td>
-        <%#= a_movie.title %>-->
-<!--      </td>
+        <%= photo.poster.username %>
+      </td>
 
       <td>
-        <%#= a_movie.year %>-->
-<!--      </td>
+        <%= photo.caption %>
+      </td>
 
       <td>
-        <%#= a_movie.director.name %>-->
-<!--      </td>
+        <%= photo.created_at %>
+      </td>
 
       <td>
-        <a href="/movies/<%#= a_movie.id %>">
+        <a href="/photos/<%= photo.id %>">
           Show details
         </a>
       </td>
     </tr>
-  <%# end %>-->
+  <% end %>
 </table>

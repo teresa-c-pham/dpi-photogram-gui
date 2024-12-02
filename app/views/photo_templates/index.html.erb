@@ -2,9 +2,7 @@
   List of photos
 </h1>
 
-<hr>
-
-<form action="/  List of photo" method="post">
+<form action="/insert_photo" method="post">
   <label for="image_box">
     Image
   </label>
@@ -12,7 +10,7 @@
   <input type="text" id="image_box" name="query_image" placeholder="Enter a URL for the image...">
 
   <label for="caption_box">
-    Image
+    Caption
   </label>
 
   <textarea type="text" id="caption_box" name="query_caption" placeholder="Enter a caption for the photo..."></textarea>
@@ -21,7 +19,7 @@
     Owner ID
   </label>
 
-  <textarea type="number" id="id_box" name="query_id" placeholder="Enter an ID of a User"></textarea>
+  <input type="number" id="id_box" name="query_id" placeholder="Enter an ID of a User">
 
   <button>
     Add photo
@@ -63,7 +61,7 @@
     </td>
 
     <td>
-      <%= photo.owner_id %>
+      <%= photo.poster.username %>
     </td>
 
     <td>

@@ -10,7 +10,7 @@
   <dd><%= @the_photo.caption %></dd>
 
   <dt>Owner</dt>
-  <dd><%= @the_photo.owner_id %></dd>
+  <dd><%= @the_photo.poster.username %></dd>
 
   <dt>Posted</dt>
   <dd><%= @the_photo.created_at %></dd>
@@ -28,7 +28,7 @@
     Caption
   </label>
 
-  <input type="text" id="caption_box" name="query_caption" value="<%= @the_photo.caption %>">
+  <textarea type="text" id="caption_box" name="query_caption"><%= @the_photo.caption %></textarea>
   <button>
     Update photo
   </button>
@@ -41,61 +41,48 @@
   </a></dd>
 </dl>
 
+<h2>Comments</h2>
 
-
-
-
-<h2>Own photos</h2>
-
-<table border="1">
+<table style="border-spacing: 20px;">
   <tr>
     <th>
-      Image
+      Commenter
     </th>
 
     <th>
-      Owner
-    </th>
-
-    <th>
-      Caption
+      Comment
     </th>
 
     <th>
       Posted
     </th>
-
-    <th>
-    </th>
   </tr>
 
-  <%# @the_director.filmography.order(:year).each do |a_movie| %>
-<!--    <tr>
+  <% @the_photo.comments.order(:created_at => :desc).each do |comment| %>
+    <tr>
       <td>
-        <%#= a_movie.id %>-->
-<!--      </td>
-
-      <td>
-        <img src="<%#= a_movie.image %>" style="width:250px;">
+        <%= comment.commenter.username %>
       </td>
 
       <td>
-        <%#= a_movie.title %>-->
-<!--      </td>
+        <%= comment.body %>
+      </td>
 
       <td>
-        <%#= a_movie.year %>-->
-<!--      </td>
-
-      <td>
-        <%#= a_movie.director.name %>-->
-<!--      </td>
-
-      <td>
-        <a href="/movies/<%#= a_movie.id %>">
-          Show details
-        </a>
+        <%= comment.created_at %>
       </td>
     </tr>
-  <%# end %>-->
+  <% end %>
 </table>
+
+<h4>Add a new comment</h4>
+<form action="/insert_comment/<%= @the_photo.id%>" method="post">
+  <label for="photo_id">Photo ID</label>
+  <input type="number" id="photo_id" name="query_photo_id" value=<%= @the_photo.id%>>
+
+  <label for="author_id">Author ID</label>
+  <input type="number" id="author_id" name="query_author_id" placeholder="Enter your author ID">
+  <label for="comment_box">Comment</label>
+  <textarea name="query_comment" id="comment_box" placeholder="Enter a comment..."></textarea>
+  <button>Add comment</button>
+</form>
