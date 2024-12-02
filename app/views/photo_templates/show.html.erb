@@ -1,0 +1,101 @@
+<h1>
+  Photo Details
+</h1>
+
+<dl>
+  <dt>Image</dt>
+  <dd><img src="<%= @the_photo.image %>" alt=""></dd>
+
+  <dt>Caption</dt>
+  <dd><%= @the_photo.caption %></dd>
+
+  <dt>Owner</dt>
+  <dd><%= @the_photo.owner_id %></dd>
+
+  <dt>Posted</dt>
+  <dd><%= @the_photo.created_at %></dd>
+
+  <dt>Edit photo</dt>
+  <dd>
+  <form action="/modify_photo/<%= @the_photo.id %>" method="post">
+  <label for="image_box">
+    Image
+  </label>
+
+  <input type="text" id="image_box" name="query_image" value="<%= @the_photo.image %>">
+
+  <label for="caption_box">
+    Caption
+  </label>
+
+  <input type="text" id="caption_box" name="query_caption" value="<%= @the_photo.caption %>">
+  <button>
+    Update photo
+  </button>
+</form>
+  </dd>
+
+  <dt>Delete photo</dt>
+  <dd><a href="/delete_photo/<%= @the_photo.id %>">
+    Delete this photo
+  </a></dd>
+</dl>
+
+
+
+
+
+<h2>Own photos</h2>
+
+<table border="1">
+  <tr>
+    <th>
+      Image
+    </th>
+
+    <th>
+      Owner
+    </th>
+
+    <th>
+      Caption
+    </th>
+
+    <th>
+      Posted
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <%# @the_director.filmography.order(:year).each do |a_movie| %>
+<!--    <tr>
+      <td>
+        <%#= a_movie.id %>-->
+<!--      </td>
+
+      <td>
+        <img src="<%#= a_movie.image %>" style="width:250px;">
+      </td>
+
+      <td>
+        <%#= a_movie.title %>-->
+<!--      </td>
+
+      <td>
+        <%#= a_movie.year %>-->
+<!--      </td>
+
+      <td>
+        <%#= a_movie.director.name %>-->
+<!--      </td>
+
+      <td>
+        <a href="/movies/<%#= a_movie.id %>">
+          Show details
+        </a>
+      </td>
+    </tr>
+  <%# end %>-->
+</table>

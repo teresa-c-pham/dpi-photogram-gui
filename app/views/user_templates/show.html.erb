@@ -1,0 +1,82 @@
+<h1>
+  <%= @the_user.username %>
+</h1>
+
+<dl>
+  <dt>ID</dt>
+  <dd><%= @the_user.id %></dd>
+
+  <dt>Edit user</dt>
+  <dd>
+  <form action="/modify_user/<%= @the_user.username %>" method="post">
+  <label for="name_box">
+    Username
+  </label>
+
+  <input type="text" id="name_box" name="query_username" value="<%= @the_user.username %>">
+
+  <button>
+    Update user
+  </button>
+</form>
+  </dd>
+</dl>
+
+
+
+
+
+<h2>Own photos</h2>
+
+<table border="1">
+  <tr>
+    <th>
+      Image
+    </th>
+
+    <th>
+      Owner
+    </th>
+
+    <th>
+      Caption
+    </th>
+
+    <th>
+      Posted
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <%# @the_director.filmography.order(:year).each do |a_movie| %>
+<!--    <tr>
+      <td>
+        <%#= a_movie.id %>-->
+<!--      </td>
+
+      <td>
+        <img src="<%#= a_movie.image %>" style="width:250px;">
+      </td>
+
+      <td>
+        <%#= a_movie.title %>-->
+<!--      </td>
+
+      <td>
+        <%#= a_movie.year %>-->
+<!--      </td>
+
+      <td>
+        <%#= a_movie.director.name %>-->
+<!--      </td>
+
+      <td>
+        <a href="/movies/<%#= a_movie.id %>">
+          Show details
+        </a>
+      </td>
+    </tr>
+  <%# end %>-->
+</table>
